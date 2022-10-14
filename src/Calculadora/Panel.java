@@ -7,10 +7,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 
+
 public class Panel extends JFrame {
     public JPanel panel;
     private JTextField interficie;
-
+    float num1, num2;
+    char signo;
 
         public Panel() {
 
@@ -30,6 +32,7 @@ public class Panel extends JFrame {
 
 
         }
+        //patatas, yogures, pan de calabaza, //
 
     private void colocarPaneles() {
             JLabel etiqueta = new JLabel();
@@ -126,7 +129,9 @@ public class Panel extends JFrame {
         ActionListener oyenteDeAccion4 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interficie.setText(interficie.getText() + "+");
+                num1=Float.parseFloat(interficie.getText());
+                signo='+';
+                interficie.setText("");
 
             }
         };
@@ -189,7 +194,9 @@ public class Panel extends JFrame {
         ActionListener oyenteDeAccion8 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interficie.setText(interficie.getText() + "-");
+                num1=Float.parseFloat(interficie.getText());
+                signo='-';
+                interficie.setText("");
 
             }
         };
@@ -253,7 +260,9 @@ public class Panel extends JFrame {
         ActionListener oyenteDeAccion12 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interficie.setText(interficie.getText() + "*");
+                num1=Float.parseFloat(interficie.getText());
+                signo='*';
+                interficie.setText("");
 
             }
         };
@@ -314,10 +323,14 @@ public class Panel extends JFrame {
             boton16.setForeground(Color.BLACK);
             boton16.setBackground(Color.WHITE);
             panel.add(boton16);
+
+
         ActionListener oyenteDeAccion16 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interficie.setText(interficie.getText() + "/");
+                num1=Float.parseFloat(interficie.getText());
+                signo='/';
+                interficie.setText("");
 
             }
         };
@@ -362,6 +375,25 @@ public class Panel extends JFrame {
             boton19.setForeground(Color.BLACK);
             boton19.setBackground(Color.WHITE);
             panel.add(boton19);
+
+        ActionListener oyenteDeAccion19 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                num2 = Integer.parseInt(interficie.getText());
+
+                if (signo == '+') {
+                    interficie.setText(Float.toString(num1 + num2));
+                } else if (signo == '-') {
+                    interficie.setText(Float.toString(num1 - num2));
+                } else if (signo == '*') {
+                    interficie.setText(Float.toString(num1 * num2));
+                } else if (signo == '/') {
+                    interficie.setText(Float.toString(num1 / num2));
+                }
+            }
+        };
+        boton19.addActionListener(oyenteDeAccion19);
+
 
 //////////////////////////////////////////////////////////////////////////////////
 
